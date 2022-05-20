@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  devise_for :users
-  get 'home/index'
+  # devise_for :users
+  devise_for :users, controllers: { sessions: 'users/sessions' }
   get '/dashboard', to: 'dashboard#index'
-  get '/user/:id', to: 'user#show'
+  
+  devise_scope :user do
+  get '/user/:id', to: 'users/sessions#show'
+end
+
+ 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
