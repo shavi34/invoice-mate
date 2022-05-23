@@ -1,33 +1,70 @@
-
-
 <div class="container">
-  <h2>Sign up</h2>
+  <div class="row justify-content-center">
+    <div class="col-5 align-self-center">
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo:false }) do |f| %>
+      <%= render "users/shared/error_messages", resource: resource %>
+        <div class="d-flex align-items-center mb-3 pb-1">
+          <i class="fas fa-cubes fa-2x me-3" style="color: #ff6219;"></i>
+          <span class="h1 fw-bold mb-0">Logo</span>
+        </div>
+        <h5 class="fw-normal mb-3 pb-3" style="letter-spacing: 1px;">Create your account</h5>
+        <div class="form-outline mb-4">
+          <%= f.text_field :name, autofocus: true, autocomplete: "name", class: "form-control" %>
+          <%= f.label :name, value: "Full Name" %><br />
+        </div>
+        <!-- Email input -->
+        <div class="form-outline mb-4">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+          <%= f.label :email, value: "Email address" %><br />
+        </div>
+        <!-- Password input -->
+        <div class="form-outline mb-4">
+          <%= f.password_field :password, autocomplete: "new-password",  class: "form-control" %>
+          <%= f.label :password %>
+           <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <br />
+        </div>
+        <div class="form-outline mb-4">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control" %>
+          <%= f.label :password_confirmation %>
+           <% if @minimum_password_length %>
+            <em>(<%= @minimum_password_length %> characters minimum)</em>
+          <% end %>
+          <br />
+        </div>
+         <div class="form-outline mb-4">
+          <%= f.text_field :country, autofocus: true, autocomplete: "Country", class: "form-control" %>
+          <%= f.label :country, value: "Country" %><br />
+        </div>
+        <div class="form-outline mb-4">
+          <%= f.number_field :mobile, autofocus: true, autocomplete: "Mobile Number", class: "form-control" %>
+          <%= f.label :mobile, value: "Mobile Number" %><br />
+        </div>
+        <!-- Submit button -->
+        <%= f.submit "Sign up", class: "btn btn-primary btn-block mb-4" %>
+        <!-- Register buttons -->
+        <div class="text-center">
+         <%= render "users/shared/links" %>
+          <%# <p>or sign up with:</p>
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-facebook-f"></i>
+          </button>
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), data: { turbo:false }) do |f| %>
-  <%= render "users/shared/error_messages", resource: resource %>
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-google"></i>
+          </button>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-twitter"></i>
+          </button>
+
+          <button type="button" class="btn btn-link btn-floating mx-1">
+            <i class="fab fa-github"></i>
+          </button> %>
+        </div>
+      <% end %>
     </div>
-
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password" %>
-    </div>
-
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </div>
-
-    <div class="actions">
-      <%= f.submit "Sign up" %>
-    </div>
-  <% end %>
-
-  <%= render "users/shared/links" %>
+  </div>
 </div>

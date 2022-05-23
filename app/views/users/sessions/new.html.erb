@@ -30,19 +30,14 @@
               <% end %>
             </div>
           </div>
-
-          <div class="col">
-            <!-- Simple link -->
-            <%= render "users/shared/links" %>
-          </div>
         </div>
-
         <!-- Submit button -->
         <%= f.submit "Log in", class: "btn btn-primary btn-block mb-4" %>
         <!-- Register buttons -->
         <div class="text-center">
-          <p>Not a member? <a href="#!">Register</a></p>
-          <p>or sign up with:</p>
+          <p>Not a member?<%= link_to ' Register', new_user_registration_path %></p>
+          <%= link_to 'Forrgot Password ?', new_user_password_path %>
+          <%# <p>or sign up with:</p>
           <button type="button" class="btn btn-link btn-floating mx-1">
             <i class="fab fa-facebook-f"></i>
           </button>
@@ -57,7 +52,7 @@
 
           <button type="button" class="btn btn-link btn-floating mx-1">
             <i class="fab fa-github"></i>
-          </button>
+          </button> %>
         </div>
       <% end %>
     </div>

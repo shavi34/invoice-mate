@@ -2,7 +2,11 @@
 
 class Users::SessionsController < Devise::SessionsController
    def show
-    @user =User.find(params[:id])
+    begin
+      @user =User.find(params[:id])
+    rescue => exception
+      flash.now[:alert] = "User not found"
+    end
   end
   
   # before_action :configure_sign_in_params, only: [:create]
