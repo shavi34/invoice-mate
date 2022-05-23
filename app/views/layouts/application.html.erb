@@ -11,9 +11,10 @@
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+    <div class="container">
+      <%= render 'layouts/messages' %>
+      <%= yield %>
+    </div>
     <% if current_user %>
       <%= current_user.email%>
       <%= link_to 'sign out', destroy_user_session_path, data: { turbo_method: :delete} %>
